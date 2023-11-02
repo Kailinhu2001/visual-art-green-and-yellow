@@ -1,0 +1,34 @@
+void setup(){
+  size(800,800);
+  
+}
+
+void draw(){
+  background(#71B52E);
+  
+  stroke(#F9E575);
+  strokeWeight(mouseY/20);
+  
+  float scope = int (map(mouseY,0,height,2,88));
+  float radius = mouseX - width/2;
+  float angle = TWO_PI/scope;
+  
+  for (int x = 120; x <width; x+= 300){
+    for (int y =120; y <height; y+=300){
+  
+      push();
+      translate(x,y);
+  
+      for (int i = 0; i <= scope; i++){
+        float dx=cos(angle*i)*radius;
+        float dy=sin(angle*i)*radius;
+  
+        push();
+        rotate(frameCount/4);
+        line(0,0,dx,dy);
+        pop();
+      }
+      pop();
+    }
+  }
+  }
